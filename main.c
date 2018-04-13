@@ -23,7 +23,7 @@ struct Node* CreateNodeWithValue (int var)
   return newNode;
 }
 
-struct Node* CreateEmptyNode ()
+struct Node* CreateEmptyNode () // Remove
 {
   struct Node* newNode = CreateNode();
   if (!newNode) {
@@ -52,7 +52,7 @@ int insertNodeAtIndex(int var, struct List* list, int indx)
   } else {
     struct Node* targetNode = getNodeAtIndex(list, indx);
     if (!targetNode) {
-      printf("No node at index cannot proceed\n");
+      printf("No node at index cannot proceed\n"); // Memory leak
       return 0;
     }
     if (targetNode->prevEntry) {
@@ -266,7 +266,7 @@ int main ()
   deleteNodeAtEnd(list);
   printf("current size is %d\n", list->listSize);
   printf("################################\n");
-  struct Node* secondNode = getNodeAtIndex(list, 1);
+  struct Node* secondNode = getNodeAtIndex(list, 1); // Demonstrate delete at index
   if (secondNode) {
     printf("data of elem at indx 1 is %d\n", secondNode->data);
   } else {
